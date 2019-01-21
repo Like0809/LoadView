@@ -89,12 +89,20 @@ public class LoadView extends FrameLayout {
         empty(DEFAULT_EMPTY_OPTIONS);
     }
 
+    public void emptyOptions(Options options) {
+        DEFAULT_EMPTY_OPTIONS.message(options.message()).action(options.action()).icon(options.icon());
+    }
+
     public void empty(Options options) {
         show(mEmptyResId, options);
     }
 
     public void error() {
         error(DEFAULT_ERROR_OPTIONS);
+    }
+
+    public void errorOptions(Options options) {
+        DEFAULT_ERROR_OPTIONS.message(options.message()).action(options.action()).icon(options.icon());
     }
 
     public void error(Options options) {
@@ -159,4 +167,5 @@ public class LoadView extends FrameLayout {
         }
         return layout;
     }
+
 }

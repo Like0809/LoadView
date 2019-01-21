@@ -1,6 +1,7 @@
 package pers.like.widget.loadview;
 
-import android.support.annotation.IdRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 
 /**
  * @author Like
@@ -34,11 +35,12 @@ public class Options {
         this.action = action;
     }
 
+    @DrawableRes
     public int icon() {
         return icon;
     }
 
-    public Options icon(int icon) {
+    public Options icon(@DrawableRes int icon) {
         this.icon = icon;
         return this;
     }
@@ -47,7 +49,7 @@ public class Options {
         return message;
     }
 
-    public Options message(String message) {
+    public Options message(@NonNull String message) {
         this.message = message;
         return this;
     }
@@ -56,7 +58,7 @@ public class Options {
         return action;
     }
 
-    public Options action(Action action) {
+    public Options action(@NonNull Action action) {
         this.action = action;
         return this;
     }
