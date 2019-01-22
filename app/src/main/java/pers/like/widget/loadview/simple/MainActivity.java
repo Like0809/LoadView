@@ -38,9 +38,8 @@ public class MainActivity extends AppCompatActivity {
         });
         findViewById(R.id.view6).setOnClickListener(v -> {
             loadView.error(new Options()
-                    .icon(R.drawable.vector_empty)
                     .action(new Action("自定义错误按钮::重试", v1 -> Toast.makeText(this, "重试", Toast.LENGTH_SHORT).show()))
-                    .message("自定义错误消息::未绑定骑手"));
+            );
         });
     }
 

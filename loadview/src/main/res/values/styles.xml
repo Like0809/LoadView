@@ -35,7 +35,7 @@
 
         <item name="lvEmptyIcon">@drawable/vector_empty</item>
         <item name="lvEmptyText">暂无数据</item>
-        <item name="lvErrorIcon">@drawable/vector_empty</item>
+        <item name="lvErrorIcon">@drawable/vector_error</item>
         <item name="lvErrorText">无网络连接，请检查您的网络...</item>
         <item name="lvErrorAction">加载失败，点击重试~~</item>
     </style>

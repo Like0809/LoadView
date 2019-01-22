@@ -43,11 +43,11 @@ public class LoadView extends FrameLayout {
         mInflater = LayoutInflater.from(context);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadView, defStyleAttr, R.style.LoadStyleDefault);
 
-        int emptyIcon = typedArray.getResourceId(R.styleable.LoadView_lvEmptyIcon, NO_ID);
+        int emptyIcon = typedArray.getResourceId(R.styleable.LoadView_lvEmptyIcon, 0);
         String emptyText = typedArray.getString(R.styleable.LoadView_lvEmptyText);
         DEFAULT_EMPTY_OPTIONS.icon(emptyIcon).message(emptyText);
 
-        int errorIcon = typedArray.getResourceId(R.styleable.LoadView_lvErrorIcon, NO_ID);
+        int errorIcon = typedArray.getResourceId(R.styleable.LoadView_lvErrorIcon, 0);
         String errorMessage = typedArray.getString(R.styleable.LoadView_lvErrorText);
         DEFAULT_ERROR_OPTIONS.icon(errorIcon).message(errorMessage);
 
@@ -90,10 +90,11 @@ public class LoadView extends FrameLayout {
     }
 
     public void emptyOptions(Options options) {
-        DEFAULT_EMPTY_OPTIONS.message(options.message()).action(options.action()).icon(options.icon());
+        updateOptionsIfNonNull(DEFAULT_EMPTY_OPTIONS, options);
     }
 
     public void empty(Options options) {
+        fillOptionsIfNull(options, DEFAULT_EMPTY_OPTIONS);
         show(mEmptyResId, options);
     }
 
@@ -102,11 +103,33 @@ public class LoadView extends FrameLayout {
     }
 
     public void errorOptions(Options options) {
-        DEFAULT_ERROR_OPTIONS.message(options.message()).action(options.action()).icon(options.icon());
+        updateOptionsIfNonNull(DEFAULT_ERROR_OPTIONS, options);
     }
 
     public void error(Options options) {
+        fillOptionsIfNull(options, DEFAULT_ERROR_OPTIONS);
         show(mErrorResId, options);
+    }
+
+    private void updateOptionsIfNonNull(Options defaultOptions, Options newOne) {
+        if (newOne.icon() != 0) {
+            defaultOptions.icon(newOne.icon());
+        }
+        if (newOne.message() != null) {
+            defaultOptions.message(newOne.message());
+        }
+        if (newOne.action() != null) {
+            defaultOptions.action(newOne.action());
+        }
+    }
+
+    private void fillOptionsIfNull(Options target, Options defaultOptions) {
+        if (target.icon() == 0) {
+            target.icon(defaultOptions.icon());
+        }
+        if (target.message() == null) {
+            target.message(defaultOptions.message());
+        }
     }
 
     private void show(int layoutId, Options options) {

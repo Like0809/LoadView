@@ -8,19 +8,19 @@ import android.support.annotation.NonNull;
  */
 public class Options {
 
-    private int icon = R.mipmap.base_empty;
-    private String message = "暂无数据";
+    private int icon;
+    private String message;
     private Action action;
 
     public Options() {
     }
 
-    public Options(int icon, String message) {
+    public Options(@DrawableRes int icon, String message) {
         this.icon = icon;
         this.message = message;
     }
 
-    public Options(int icon, String message, Action action) {
+    public Options(@DrawableRes int icon, String message, Action action) {
         this.icon = icon;
         this.message = message;
         this.action = action;
@@ -35,7 +35,6 @@ public class Options {
         this.action = action;
     }
 
-    @DrawableRes
     public int icon() {
         return icon;
     }
@@ -49,7 +48,7 @@ public class Options {
         return message;
     }
 
-    public Options message(@NonNull String message) {
+    public Options message(String message) {
         this.message = message;
         return this;
     }
